@@ -1,0 +1,20 @@
+.dashboard {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "side main";
+    grid-template-columns: 280px auto;
+    grid-template-rows: auto 1fr;
+    height: 100svh;
+    > .header {
+        grid-area: header;
+    }
+    > .main {
+        grid-area: main;
+        overflow-y: auto;
+    }
+    > .side {
+        grid-area: side;
+        overflow-y: auto;
+    }
+}
